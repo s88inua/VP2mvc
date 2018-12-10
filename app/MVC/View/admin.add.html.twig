@@ -1,0 +1,75 @@
+{% extends "admin.html.twig" %}
+
+{% block detail %}
+
+                    <div class="card-body">
+                        <div class="card-body">
+                            <h4 class="card-title">Добавление нового пользователя</h4>
+                            {% if error is not null %}
+                                <small class="text-danger">{{ error }}</small>
+                            {% endif %}
+                            <form action="/admin/user/add/confirm" method="post">
+                                <div>
+                                    <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="login"
+                                           placeholder="Введите логин"
+                                           required/>
+                                </div>
+                                <div>
+                                    <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                    <input type="password"
+                                           class="form-control"
+                                           name="password"
+                                           placeholder="Введите пароль"
+                                           required/>
+                                </div>
+                                <div>
+                                    <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                    <input type="password"
+                                           class="form-control"
+                                           name="passwordConfirm"
+                                           placeholder="Введите пароль повторно"
+                                           required/>
+                                </div>
+                                <div>
+                                    <span class="input-group-addon"><i class="fa fa-tag" aria-hidden="true"></i></span>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="lastName"
+                                           placeholder="Фамилия"
+                                           />
+                                </div>
+                                <div>
+                                    <span class="input-group-addon"><i class="fa fa-tag" aria-hidden="true"></i></span>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="firstName"
+                                           placeholder="Имя"
+                                           />
+                                </div>
+                                <div>
+                                    <span class="input-group-addon"><i class="fa fa-tag" aria-hidden="true"></i></span>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="midName"
+                                           placeholder="Отчество"
+                                           />
+                                </div>
+                                <div>
+                                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                    <input type="date"
+                                           class="form-control"
+                                           name="birthDate"
+                                           placeholder="Дата рождения"
+                                    />
+                                </div>
+                                <div>
+                                    <input type="submit" class="btn btn-primary" value="Зарегистрировать">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+{% endblock %}
+

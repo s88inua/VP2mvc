@@ -1,0 +1,73 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+                <div>
+                    <h4>
+                       <span>{{ user.login }}</span>
+                    </h4>
+                    <h4><a href="/user/logout"> Выйти из профиля</a></h4>
+                    <div>
+                        <div>
+                            <div>
+                                <div>
+                                    {% if avatar is null %}
+                                        <img src="../../../web/uploads/camera.gif" alt="Аватарка" width="200" height="200">
+                                    {% else %}
+                                        <img src="{{ avatar.path }}.gif" alt="Аватарка" width="200" height="200">
+                                    {% endif %}
+                                    <div>
+                                        <form action="/photo/upload" method="post" enctype="multipart/form-data">
+                                            <input type="hidden" name="user" value="{{ user.id }}">
+                                            <label >
+                                                <p> Аватар автоматически подгрузит в хранилище. Фото можно будет выбрать по кнопке ниже</p>
+                                                <input type="file" name="photo" onchange="this.form.submit();" >
+                                            </label>
+                                        </form>
+
+                                        <a href="/photo/select/form">Выбрать на аву</a>
+                                    </div>
+                                </div>
+
+                                <div >
+                                    <form action="/user/info/update" method="post">
+                                        <input type="hidden" name="user" value="{{ user.id }}">
+                                            <div>
+                                                <div>
+                                                    <input type="text" class="form-control"
+                                                           name="lastName" placeholder="Фамилия"
+                                                            value="{{ user.lastname }}">
+                                                </div>
+                                                <div>
+                                                    <input type="text" class="form-control"
+                                                           name="firstName" placeholder="Имя"
+                                                           value="{{ user.firstname }}">
+                                                </div>
+                                                <div>
+                                                    <input type="text" class="form-control"
+                                                           name="midName" placeholder="Отчество"
+                                                           value="{{ user.midname }}">
+                                                </div>
+                                            </div>
+                                        <div>
+                                            <div>
+                                                <input type="date" class="form-control"
+                                                       name="birthDate" value="{{ user.birthdate }}">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <label for="description">Описание</label>
+                                                <textarea class="form-control" name="description" id="description">{{ user.description }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <input type="submit" class="btn btn-primary " value="Внести изменения">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+{% endblock %}

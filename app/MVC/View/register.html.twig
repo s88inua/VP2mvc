@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+                    <div class="card-body">
+                        <h4 class="card-title">Регистрация</h4>
+                        {% if error is not null %}
+                            <small class="text-danger">{{ error }}</small>
+                        {% endif %}
+                        <form action="/user/register/confirm" method="post">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                <input type="text"
+                                       class="form-control"
+                                       name="login"
+                                       placeholder="Введите логин"
+                                       required/>
+                            </div>
+                            <div class="input-group mt-3">
+                                <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                <input type="text"
+                                       class="form-control"
+                                       name="password"
+                                       placeholder="Введите пароль"
+                                       required/>
+                            </div>
+                            <div class="input-group mt-3">
+                                <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                <input type="text"
+                                       class="form-control"
+                                       name="passwordConfirm"
+                                       placeholder="Введите пароль повторно"
+                                       required/>
+                            </div>
+                            <div class="text-right mt-3">
+                                <input type="submit" class="btn btn-primary" value="Зарегистрировать">
+                            </div>
+                        </form>
+                    </div>
+{% endblock %}

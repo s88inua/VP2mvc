@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div>
+        <div>
+            <div>
+                <div>
+                    <h4>
+                        Выберите новую аватарку
+                    </h4>
+                    <div>
+                        <form action="/photo/select/save" method="post">
+                            <div class="container">
+                                {% for photo in photos %}
+                                    <div class="row mt-3">
+                                        <div class="col-1">
+                                            <div>
+                                                <input type="radio" name="avatar" value="{{ photo.id }}" class="form-control align-self-center">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <img src="{{ photo.path }}.gif" alt="" width="32" height="32">
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                <div>
+                                    <input type="submit" class="btn btn-primary mt-3" value="Сохранить">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
